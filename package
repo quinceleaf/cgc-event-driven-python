@@ -1,0 +1,31 @@
+#!/bin/bash
+source ~/.local/share/virtualenvs/backend-ZY8b12iM/bin/activate
+
+while true
+do
+ read -r -p "Use defaults (template=template.yml, prefix=CGC-COVID)? [Y/n]" choice
+ 
+ case $choice in
+     [yY][eE][sS]|[yY])
+ echo "Yes"
+sam package --template-file template.yml --s3-bucket quinceleaf-sam-artifacts --s3-prefix CGC-COVID --output-template-file packaged.yml --profile standarduser
+ break
+ ;;
+     [nN][oO]|[nN])
+ echo "No"
+ read -r -p "Enter template file name:" input_template
+ read -r -p "Enter prefix name:" input_prefix
+sam package --template-file $input_template --s3-bucket quinceleaf-sam-artifacts --s3-prefix $input_prefix --output-template-file packaged.yml --profile standarduser
+ break
+        ;;
+     *)
+ echo "Invalid input..."
+ ;;
+ esac
+done
+
+
+
+
+
+

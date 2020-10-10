@@ -1,0 +1,26 @@
+#!/bin/bash
+source ~/.local/share/virtualenvs/backend-ZY8b12iM/bin/activate
+
+while true
+do
+ read -r -p "Use defaults (template.yml, standarduser)? [Y/n]" choice
+ 
+ case $choice in
+     [yY][eE][sS]|[yY])
+ echo "Yes"
+ sam validate --template-file template.yml --profile standarduser
+ break
+ ;;
+     [nN][oO]|[nN])
+ echo "No"
+ read -r -p "Enter template file name:" input_template
+ read -r -p "Enter profile file name:" input_profile
+ sam validate --template-file $input_template --profile $input_profile
+ break
+        ;;
+     *)
+ echo "Invalid input..."
+ ;;
+ esac
+done
+

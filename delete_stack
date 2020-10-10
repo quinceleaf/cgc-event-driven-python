@@ -1,0 +1,22 @@
+#!/bin/bash
+source ~/.local/share/virtualenvs/backend-ZY8b12iM/bin/activate
+
+while true
+do
+ read -r -p "Use delete stack CGC-COVID? [Y/n]" choice
+ 
+ case $choice in
+     [yY][eE][sS]|[yY])
+ echo "YES - deleting stack..."
+ aws cloudformation delete-stack --stack-name CGC-COVID --profile standarduser
+ break
+ ;;
+     [nN][oO]|[nN])
+ echo "No action taken"
+ break
+        ;;
+     *)
+ echo "Invalid input..."
+ ;;
+ esac
+done

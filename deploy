@@ -1,0 +1,28 @@
+#!bash
+source ~/.local/share/virtualenvs/backend-ZY8b12iM/bin/activate
+
+while true
+do
+ read -r -p "Use default stack name (stack-name=CGC-COVID, 2 parameters)? [Y/n]" choice
+ 
+ case $choice in
+     [yY][eE][sS]|[yY])
+ echo "Yes"
+sam deploy --template-file packaged.yml --stack-name CGC-COVID --capabilities CAPABILITY_NAMED_IAM --profile standarduser --parameter-overrides ParameterKey=URLDatasetNYT,ParameterValue=https://github.com/nytimes/covid-19-data/blob/master/us.csv ParameterKey=URLDatasetJHU,ParameterValue=https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv
+ break
+ ;;
+     [nN][oO]|[nN])
+ echo "No"
+ read -r -p "Enter stack name:" input_target
+sam deploy --template-file packaged.yml --stack-name $input_target --capabilities CAPABILITY_NAMED_IAM --profile standarduser 
+
+ break
+        ;;
+     *)
+ echo "Invalid input..."
+ ;;
+ esac
+done
+
+
+
