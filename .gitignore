@@ -1,0 +1,21 @@
+# virtualenv
+__pycache__
+.venv
+.vscode
+Pipfile.lock
+
+# scripts for SAM
+.aws-sam
+build
+deploy
+package
+validate
+packaged.yml
+delete_stack
+package/*
+
+# documents for planning
+documents
+
+# temporary files and experiments
+snippets
