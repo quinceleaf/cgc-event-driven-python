@@ -4,11 +4,18 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
+black = "*"
 
 [packages]
-aws-sam-cli = "*"
-aws-sdk = "*"
+urllib3 = "*"
 boto3 = "*"
+aws-sam-cli = "*"
+pandas = "*"
+dynamodb-json = "*"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true

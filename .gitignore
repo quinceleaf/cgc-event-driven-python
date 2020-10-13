@@ -19,3 +19,7 @@ documents
 
 # temporary files and experiments
 snippets
+
+# frontend
+node_modules
+.next
