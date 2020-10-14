@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Barlow", sans-serif;
+}
+
+title {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.icon {
+  vertical-align: bottom;
+}
