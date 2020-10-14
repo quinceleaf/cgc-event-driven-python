@@ -51,7 +51,7 @@ const ChartDoughnut = ({ data }) => {
   };
 
   return (
-    <div className="md:p-6 p-4">
+    <div className="lg:p-6 p-4">
       <div className="mx-auto mb-4 font-3xl font-bold">
         Proportion of Reported Outcomes
       </div>

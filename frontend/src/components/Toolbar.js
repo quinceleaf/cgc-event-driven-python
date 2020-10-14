@@ -7,14 +7,14 @@ import {
 
 const Sources = () => {
   return (
-    <div className="md:mt-0 mt-5">
-      <div className="md:text-sm text-xs">
+    <div className="lg:mt-0 mt-5">
+      <div className="lg:text-sm text-xs">
         Data is compiled daily from
-        <span className="md:inline hidden"> the following sources</span>:
+        <span className="lg:inline hidden"> the following sources</span>:
         <ul>
-          <li className="md:mt-0 mt-1">
+          <li className="lg:mt-0 mt-1">
             The New York Times{" "}
-            <span className="md:hidden inline">
+            <span className="lg:hidden inline">
               <br />
             </span>
             <a
@@ -25,9 +25,9 @@ const Sources = () => {
               COVID-19 reported cases, United States
             </a>
           </li>
-          <li className=" md:mt-0 mt-1">
+          <li className=" lg:mt-0 mt-1">
             The Johns Hopkins University{" "}
-            <span className="md:hidden inline">
+            <span className="lg:hidden inline">
               <br />
             </span>
             <a
@@ -46,19 +46,19 @@ const Sources = () => {
 
 const Toolbar = () => {
   return (
-    <div className="md:p-6 p-4 h-auto shadow-sm border flex content-between flex-wrap">
+    <div className="lg:p-6 p-4 h-auto shadow-sm border flex content-between flex-wrap">
       <div class="w-full ">
         <Legend />
       </div>
 
-      <div className=" flex md:flex-row flex-col w-full">
-        <div className="md:w-1/3 w-full md:mr-3 mr-0">
+      <div className=" flex lg:flex-row flex-col w-full">
+        <div className="lg:w-1/3 w-full lg:mr-3 mr-0">
           <OptionsDisplayType />
         </div>
-        <div className="md:w-1/3 w-full md:mr-3 mr-0">
+        <div className="lg:w-1/3 w-full lg:mr-3 mr-0">
           <OptionsDatasets />
         </div>
-        <div className="md:w-2/3 w-full">
+        <div className="lg:w-2/3 w-full">
           <OptionsDateRange />
         </div>
       </div>

@@ -6,8 +6,8 @@ const OptionsDisplayType = () => {
   const dataContext = useContext(DataContext);
 
   return (
-    <div className="md:mt-0 mt-4">
-      <div className="font-bold md:text-xl text-lg">Data Organization</div>
+    <div className="lg:mt-0 mt-4">
+      <div className="font-bold lg:text-xl text-lg">Data Organization</div>
       <div className="flex flex-row">
         <input
           id="d1"

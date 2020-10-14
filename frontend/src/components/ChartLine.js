@@ -131,21 +131,21 @@ const ChartLine = ({ data }) => {
   return (
     <div>
       <div className="flex flex-col">
-        <div className="md:p-6 p-2">
+        <div className="lg:p-6 p-2">
           <div className="flex flex-row justify-between mb-4">
             <div className="font-3xl font-bold">
               {dataContext.displayType === "cumulative"
                 ? "Reported Outcomes, Over Period"
                 : "Daily Change in Reported Outcomes"}
             </div>
-            <div className="ml-3 text-gray-500 text-sm italic md:block hidden">
+            <div className="ml-3 text-gray-500 text-sm italic lg:block hidden">
               Hover over chart lines for more information
             </div>
           </div>
           <Line data={chartData} legend={legend} options={options} />
         </div>
       </div>
-      <div className="ml:5 text-gray-500 text-sm italic md:hidden ">
+      <div className="ml:5 text-gray-500 text-sm italic lg:hidden ">
         <span className="ml-2">
           Hover over chart lines for more information
         </span>

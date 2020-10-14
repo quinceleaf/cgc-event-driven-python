@@ -1,6 +1,6 @@
 const TabbedPanel = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="md:mt-0 mt-3 mb-5 block lg:hidden">
+    <div className="lg:mt-0 mt-3 mb-5 block lg:hidden">
       <ul class="flex border-b">
         <li class="-mb-px mr-1">
           <a

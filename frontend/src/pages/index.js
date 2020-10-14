@@ -74,15 +74,15 @@ const Index = () => {
       <Layout>
         <div className="flex flex-col">
           {/* DASHBOARD TITLE */}
-          <div className="flex md:flex-row flex-col md:items-center items-start">
-            <div className="md:mb-3 mb-2 font-bold text-4xl md:tracking-normal tracking-tight md:leading-normal leading-none ">
+          <div className="flex lg:flex-row flex-col lg:items-center items-start">
+            <div className="lg:mb-3 mb-2 font-bold text-4xl lg:tracking-normal tracking-tight lg:leading-normal leading-none ">
               COVID-19 Cases in{" "}
-              <span className="md:hidden inline">
+              <span className="lg:hidden inline">
                 <br />
               </span>{" "}
               the United States
             </div>
-            <div className="md:ml-3 ml-0 text-gray-500 font-normal text-sm italic">
+            <div className="lg:ml-3 ml-0 text-gray-500 font-normal text-sm italic">
               Most recent data: {checkpoint.last_successful_run}
             </div>
           </div>
@@ -97,8 +97,8 @@ const Index = () => {
             <div
               className={
                 activeTab === "table"
-                  ? "md:w-1/4 w-full"
-                  : "md:w-1/4 w-full md:block hidden"
+                  ? "lg:w-1/4 w-full"
+                  : "lg:w-1/4 w-full lg:block hidden"
               }
             >
               {query.isLoading ? (
@@ -114,8 +114,8 @@ const Index = () => {
             <div
               className={
                 activeTab === "table"
-                  ? "w-3/4 mx-4 md:block hidden"
-                  : "w-3/4 mx-4 md:block "
+                  ? "w-3/4 mx-4 lg:block hidden"
+                  : "w-3/4 mx-4 lg:block "
               }
             >
               <div className="flex flex-col">
@@ -123,8 +123,8 @@ const Index = () => {
                   <div
                     className={
                       activeTab === "chart"
-                        ? "lg:p-0 pb-2 border border-gray-300 shadow-sm md:w-2/3 w-full"
-                        : "border border-gray-300 shadow-sm md:w-2/3 w-full md:block hidden"
+                        ? "lg:p-0 pb-2 border border-gray-300 shadow-sm lg:w-2/3 w-full"
+                        : "border border-gray-300 shadow-sm lg:w-2/3 w-full lg:block hidden"
                     }
                   >
                     {query.isLoading ? (
@@ -138,8 +138,8 @@ const Index = () => {
                   <div
                     className={
                       activeTab === "doughnut"
-                        ? "md:w-1/3 w-full ml-4 border border-gray-300 shadow-sm "
-                        : "md:w-1/3 w-full ml-4 border border-gray-300 shadow-sm md:block hidden"
+                        ? "lg:w-1/3 w-full ml-4 border border-gray-300 shadow-sm "
+                        : "lg:w-1/3 w-full ml-4 border border-gray-300 shadow-sm lg:block hidden"
                     }
                   >
                     {query.isLoading ? (
@@ -155,7 +155,7 @@ const Index = () => {
                 {/* TOOLBAR */}
                 <div
                   className={
-                    activeTab === "toolbar" ? "mt-4" : "mt-4 md:block hidden"
+                    activeTab === "toolbar" ? "mt-4" : "mt-4 lg:block hidden"
                   }
                 >
                   <Toolbar />

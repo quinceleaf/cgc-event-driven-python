@@ -71,7 +71,7 @@ const Pagination = ({ pageProps }) => {
         disabled={!canNextPage}
       >
         <MdLastPage />
-        <span className="md:block hidden mx-2">{`${pageCount} ${
+        <span className="ml-3 md:hidden block">{`${pageCount} ${
           pageCount === 1 ? "page" : "pages"
         }`}</span>
       </button>
@@ -99,7 +99,7 @@ const Pagination = ({ pageProps }) => {
     }
 
     return (
-      <div>
+      <div className="xl:block lg:hidden block">
         {renderPageRange.map((number) =>
           number === pageIndex + 1 ? (
             // this is the currently-displayed page

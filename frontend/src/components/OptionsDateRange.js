@@ -16,16 +16,16 @@ const OptionsDateRange = () => {
   };
 
   return (
-    <div className="flex flex-col md:mt-0 mt-4">
-      <div className="font-bold md:text-xl text-lg">Date Range</div>
+    <div className="flex flex-col lg:mt-0 mt-4">
+      <div className="font-bold lg:text-xl text-lg">Date Range</div>
 
       <div>
-        <div className="flex md:flex-row flex-col md:justify-end justify-start">
+        <div className="flex lg:flex-row flex-col lg:justify-end justify-start">
           {/* START INTERVAL */}
-          <div className="flex flex-col mt-2 md:mr-2 mr-0 w-full">
+          <div className="flex flex-col mt-2 lg:mr-2 mr-0 w-full">
             <label
               htmlFor="startDate"
-              className="md:mr-2 mr-0 md:text-sm text-xs text-gray-600"
+              className="lg:mr-2 mr-0 lg:text-sm text-xs text-gray-600"
             >
               Start
             </label>
@@ -70,10 +70,10 @@ const OptionsDateRange = () => {
           </div>
 
           {/* END INTERVAL */}
-          <div className="flex flex-col md:mt-2 mt-3 md:ml-2 ml-0 w-full">
+          <div className="flex flex-col lg:mt-2 mt-3 lg:ml-2 ml-0 w-full">
             <label
               htmlFor={"endDate"}
-              className="mr-2 md:text-sm text-xs text-gray-600"
+              className="mr-2 lg:text-sm text-xs text-gray-600"
             >
               End{" "}
             </label>
