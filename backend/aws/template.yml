@@ -41,6 +41,11 @@ Resources:
             Statement:
               - Effect: Allow
                 Action:
+                  - SNS:Publish
+                Resource:
+                  - !Ref DatabaseUpdatedTopic
+              - Effect: Allow
+                Action:
                   - logs:CreateLogGroup
                   - logs:CreateLogStream
                   - logs:PutLogEvents
@@ -251,6 +256,7 @@ Resources:
       Environment:
         Variables:
           TABLE_NAME: !Ref DynamoDBTable
+          TOPIC_ARN: !Ref DatabaseUpdatedTopic
           URL_DATASET_NYT: !Ref URLDatasetNYT
           URL_DATASET_JHU: !Ref URLDatasetJHU
 

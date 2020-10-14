@@ -15,11 +15,23 @@ from cgc_covid_load_data import load_data
 
 
 TABLE_NAME = os.environ["TABLE_NAME"]
+TOPIC_ARN = os.environ["TOPIC_ARN"]
+
 URL_DATASET_JHU = os.environ["URL_DATASET_JHU"]
 URL_DATASET_NYT = os.environ["URL_DATASET_NYT"]
 
 
+def publish_to_sns(error_message):
+    # publishes error message to SNS topic for interested consumers
+   
+    response = sns.publish(
+        TopicArn=TOPIC_ARN,
+        Message=error_message,
+    )
+
+
 def lambda_handler(event, context):
+
     # Fetch datasets
     try:
         success, data_nyt, errors = fetch_data(URL_DATASET_NYT)
@@ -34,8 +46,10 @@ def lambda_handler(event, context):
         else:
             print(errors)
     except:
-        print("Could not retrieve datasets, exiting")
-        sys.exit("Could not retrieve datasets, exiting")
+        error_message = "Could not retrieve datasets"
+        publish_to_sns(error_message)
+        print(error_message)
+        sys.exit(error_message)
 
     # Transform data
     try:
@@ -45,8 +59,10 @@ def lambda_handler(event, context):
         else:
             print(errors)
     except:
-        print("Could not transform datasets, exiting")
-        sys.exit("Could not transform datasets, exiting")
+        error_message = "Could not transform datasets"
+        publish_to_sns(error_message)
+        print(error_message)
+        sys.exit(error_message)
 
     # Load data
     try:
@@ -56,7 +72,9 @@ def lambda_handler(event, context):
         else:
             print(errors)
     except:
-        print("Could not load to database, exiting")
-        sys.exit("Could not load to database, exiting")
+        error_message = "Could not load to database"
+        publish_to_sns(error_message)
+        print(error_message)
+        sys.exit(error_message)
 
     return
