@@ -23,3 +23,5 @@ snippets
 # frontend
 node_modules
 .next
+out
+public
