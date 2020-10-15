@@ -49,6 +49,11 @@ export const filterDatasets = (
       ...(includeCases === true && { cases: obj.cases }),
       ...(includeDeaths === true && { deaths: obj.deaths }),
       ...(includeRecovered === true && { recovered: obj.recovered }),
+      ...(includeCases === true && { daily_cases: obj.daily_cases }),
+      ...(includeDeaths === true && { daily_deaths: obj.daily_deaths }),
+      ...(includeRecovered === true && {
+        daily_recovered: obj.daily_recovered,
+      }),
       date: obj.date,
     };
     temp.push(updatedObj);

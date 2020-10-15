@@ -15,7 +15,9 @@ const OptionsDisplayType = () => {
           name="changeDisplayType"
           value="cumulative"
           checked={dataContext.displayType === "cumulative"}
-          onClick={() => dataContext.setDisplayType("cumulative")}
+          onClick={() => {
+            dataContext.setDisplayType("cumulative");
+          }}
           className="mt-1 mr-1"
         />
         <label htmlFor="d1">Cumulative</label>

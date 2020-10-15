@@ -26,7 +26,7 @@ const ChartLine = ({ data }) => {
         data: ds.data,
         fill: false,
         backgroundColor:
-          ds.label == "Total Cases"
+          ds.label == "Cases"
             ? "rgb(0,128,255,0.3)"
             : ds.label == "Deaths"
             ? "rgb(216,0,0,0.3)"
@@ -34,7 +34,7 @@ const ChartLine = ({ data }) => {
             ? "rgb(0,140,0,0.3)"
             : "#000000",
         borderColor:
-          ds.label == "Total Cases"
+          ds.label == "Cases"
             ? "rgb(0,128,255,1)"
             : ds.label == "Deaths"
             ? "rgb(216,0,0,1)"
@@ -49,13 +49,24 @@ const ChartLine = ({ data }) => {
     return arr;
   };
 
+  const primaryKey = "date";
+
+  // if (dataContext.displayType === "cumulative") {
   const labels = {
-    cases: "Total Cases",
+    cases: "Cases",
     deaths: "Deaths",
     recovered: "Recovered",
   };
-  const primaryKey = "date";
   const secondaryKeys = ["cases", "deaths", "recovered"];
+  // } else if (dataContext.displayType === "daily") {
+  //   const labels = {
+  //     daily_cases: "Cases",
+  //     daily_deaths: "Deaths",
+  //     daily_recovered: "Recovered",
+  //   };
+  //   const secondaryKeys = ["daily_cases", "daily_deaths", "daily_recovered"];
+  // }
+
   const transformedData = convertDataToChartsJsFormat(
     data,
     labels,
@@ -132,21 +143,21 @@ const ChartLine = ({ data }) => {
     <div>
       <div className="flex flex-col">
         <div className="lg:p-6 p-2">
-          <div className="flex flex-row justify-between mb-4">
-            <div className="font-3xl font-bold">
+          <div className="flex flex-row justify-between">
+            <div className="font-3xl font-bold mb-3">
               {dataContext.displayType === "cumulative"
-                ? "Reported Outcomes, Over Period"
-                : "Daily Change in Reported Outcomes"}
+                ? "Cumulative Cases and Outcomes"
+                : "Daily Reported Cases and Outcomes"}
             </div>
-            <div className="ml-3 text-gray-500 text-sm italic lg:block hidden">
+            {/* <div className="ml-3 text-gray-500 text-sm italic lg:block hidden">
               Hover over chart lines for more information
-            </div>
+            </div> */}
           </div>
           <Line data={chartData} legend={legend} options={options} />
         </div>
       </div>
-      <div className="ml:5 text-gray-500 text-sm italic lg:hidden ">
-        <span className="ml-2">
+      <div className="ml:5 text-gray-500 text-sm italic  ">
+        <span className="ml-2 mb-2">
           Hover over chart lines for more information
         </span>
       </div>

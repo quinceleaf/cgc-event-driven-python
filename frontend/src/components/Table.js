@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import { usePagination, useSortBy, useTable } from "react-table";
@@ -18,25 +18,59 @@ const DataTable = ({ tableData }) => {
         className:
           "table-cell p-1 text-sm font-light border bg-white text-center",
       },
-      {
-        accessor: "cases",
-        Header: "Cases",
-        className:
-          "table-cell p-1 pr-3 text-sm font-light border bg-white text-right",
-      },
 
       {
-        accessor: "deaths",
-        Header: "Deaths",
-        className:
-          "table-cell p-1 pr-3 text-sm font-light border bg-white text-right",
+        Header: "Cumulative",
+        columns: [
+          {
+            accessor: "cases",
+            Header: "Cases",
+            isVisible: dataContext.displayType === "cumulative" ? true : false,
+            className:
+              "table-cell p-1 pr-3 text-sm font-light border bg-white text-right",
+          },
+          {
+            accessor: "deaths",
+            Header: "Deaths",
+            isVisible: dataContext.displayType === "cumulative" ? true : false,
+            className:
+              "table-cell p-1 pr-3 text-sm font-light border bg-white text-right",
+          },
+          {
+            accessor: "recovered",
+            Header: "Recovered",
+            isVisible: dataContext.displayType === "cumulative" ? true : false,
+            className:
+              "table-cell p-1 pr-3 text-sm font-light border bg-white text-right",
+          },
+        ],
       },
-      {
-        accessor: "recovered",
-        Header: "Recovered",
-        className:
-          "table-cell p-1 pr-3 text-sm font-light border bg-white text-right",
-      },
+      // {
+      //   Header: "Daily",
+      //   columns: [
+      //     {
+      //       accessor: "daily_cases",
+      //       Header: "Cases",
+      //       isVisible: dataContext.displayType === "daily" ? true : false,
+      //       className:
+      //         "table-cell p-1 pr-3 text-sm font-light border bg-yellow-100 text-right",
+      //     },
+      //     {
+      //       accessor: "daily_deaths",
+      //       Header: "Deaths",
+      //       isVisible: dataContext.displayType === "daily" ? true : false,
+      //       className:
+      //         "table-cell p-1 pr-3 text-sm font-light border bg-yellow-100 text-right",
+      //     },
+      //     {
+      //       accessor: "daily_recovered",
+      //       Header: "Recovered",
+      //       isVisible: dataContext.displayType === "daily" ? true : false,
+      //       className:
+      //         "table-cell p-1 pr-3 text-sm font-light border bg-yellow-100 text-right",
+      //     },
+      //   ],
+      // },
     ],
     []
   );
@@ -47,6 +81,7 @@ const DataTable = ({ tableData }) => {
     headerGroups,
     prepareRow,
     rows,
+    setHiddenColumns,
     // the following are pagination-specific parameters
     page,
     canPreviousPage,
@@ -81,7 +116,7 @@ const DataTable = ({ tableData }) => {
   };
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col">
       <div>
         <table
           {...getTableProps()}

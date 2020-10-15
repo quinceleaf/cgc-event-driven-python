@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Head from "next/head";
 
+import { ModalContainer } from "reoverlay";
+
 import Header from "./Header";
 
 export default function Layout({ siteTitle, children, ...props }) {
@@ -22,6 +24,7 @@ export default function Layout({ siteTitle, children, ...props }) {
 
         <div className="flex-grow mt-4 lg:px-16 px-4">{children}</div>
       </section>
+      <ModalContainer />
     </div>
   );
 }

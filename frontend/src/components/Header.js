@@ -2,31 +2,16 @@ import { useState } from "react";
 import Link from "next/link";
 
 import { SiGithub, SiLinkedin } from "react-icons/si";
+import { Reoverlay } from "reoverlay";
 
-const links = [
-  {
-    route:
-      "https://acloudguru.com/blog/engineering/cloudguruchallenge-python-aws-etl",
-    description: "About",
-  },
-];
-
-const renderLinks = () => {
-  return links.map((link) => {
-    return (
-      <li key={link.description} className="navlink">
-        <Link href={link.route}>
-          <a className="inline-block pr-6 lg:pb-0 pb-3 text-md text-gray-500 hover:text-gray-400">
-            {link.description}
-          </a>
-        </Link>
-      </li>
-    );
-  });
-};
+import { Sources } from "../components";
 
 export default function Header() {
   const [showDropdownMenu, toggleDropdownMenu] = useState(false);
+
+  const showSources = () => {
+    Reoverlay.showModal(Sources, {});
+  };
 
   return (
     <header
@@ -78,14 +63,32 @@ export default function Header() {
       >
         <nav>
           <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0 navlist">
-            {renderLinks()}
+            <li className="navlink">
+              <a
+                className="inline-block pr-6 lg:pb-0 pb-3 text-md text-gray-500 hover:text-gray-400"
+                href="#"
+                onClick={() => showSources()}
+              >
+                Sources
+              </a>
+            </li>
 
-            {/* SOCIAL MEDIA LINKS */}
+            <li className="navlink">
+              <a
+                className="inline-block pr-6 lg:pb-0 pb-3 text-md text-gray-500 hover:text-gray-400"
+                href="https://acloudguru.com/blog/engineering/cloudguruchallenge-python-aws-etl"
+                target="_blank"
+              >
+                About
+              </a>
+            </li>
+
             <div className="flex flex-row mt-1">
               <li className="navlink">
                 <a
                   className="inline-block pr-6 lg:pb-0 pb-3 text-2xl text-gray-500 hover:text-gray-400"
                   href="https://github.com/quinceleaf/cgc-event-driven-python"
+                  target="_blank"
                 >
                   <SiGithub />
                 </a>
@@ -94,6 +97,7 @@ export default function Header() {
                 <a
                   className="inline-block pr-6 lg:pb-0 pb-3 text-2xl text-gray-500 hover:text-gray-400"
                   href="https://www.linkedin.com/in/brian-ibbotson/"
+                  target="_blank"
                 >
                   <SiLinkedin />
                 </a>

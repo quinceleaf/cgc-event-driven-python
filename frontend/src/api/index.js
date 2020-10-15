@@ -1,1 +1,1 @@
-export const apiData = "https://api-323920.quinceleaf.app"
+export const apiData = "https://cgc-covid-dashboard.quinceleaf.app";

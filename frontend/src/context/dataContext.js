@@ -17,6 +17,12 @@ const DataProvider = ({ children }) => {
     format(new Date(new Date() - 60 * 60 * 24 * 1000), "Y-MM-d")
   );
 
+  const [visibleColumns, setVisibleColumns] = useState(
+    "cases",
+    "deaths",
+    "recovered"
+  );
+
   const [displayType, setDisplayType] = useState("cumulative");
 
   return (
@@ -34,6 +40,8 @@ const DataProvider = ({ children }) => {
         setDisplayIntervalEnd,
         displayType,
         setDisplayType,
+        visibleColumns,
+        setVisibleColumns,
       }}
     >
       {children}

@@ -11,6 +11,7 @@ import OptionsDateRange from "./OptionsDateRange";
 import OptionsDatasets from "./OptionsDatasets";
 import OptionsDisplayType from "./OptionsDisplayType";
 import Pagination from "./Pagination";
+import Sources from "./Sources";
 import TabbedPanel from "./TabbedPanel";
 import Table from "./Table";
 import Toolbar from "./Toolbar";
@@ -30,6 +31,7 @@ export {
   OptionsDatasets,
   OptionsDisplayType,
   Pagination,
+  Sources,
   Table,
   TabbedPanel,
   Toolbar,

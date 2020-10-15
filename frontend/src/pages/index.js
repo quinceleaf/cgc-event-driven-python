@@ -35,8 +35,6 @@ const Index = () => {
 
   const initialData = query.isLoading ? [] : query.isError ? [] : query.data;
 
-  const fetching = query.isFetching;
-
   // ––– QUERY CHECKPOINT
   const queryCheckpoint = useQuery(
     "checkpoint",
@@ -54,8 +52,7 @@ const Index = () => {
     ? []
     : queryCheckpoint.data[0];
 
-  const fetchingCheckpoint = queryCheckpoint.isFetching;
-
+  // repackage data from API to match chart and table requirements
   const intervalData = filterArrayOfObjects(
     initialData,
     dataContext.displayIntervalStart,
@@ -92,13 +89,13 @@ const Index = () => {
             <TabbedPanel activeTab={activeTab} setActiveTab={setActiveTab} />
           </div>
 
-          <div className="flex flex-row">
+          <div className="flex flex-row flex-grow-0 flex-shrink-0">
             {/* START TABLE */}
             <div
               className={
                 activeTab === "table"
-                  ? "lg:w-1/4 w-full"
-                  : "lg:w-1/4 w-full lg:block hidden"
+                  ? "lg:w-1/3 w-full"
+                  : "lg:w-1/3 w-full lg:block hidden"
               }
             >
               {query.isLoading ? (
@@ -106,7 +103,9 @@ const Index = () => {
               ) : query.isError ? (
                 <Error />
               ) : data ? (
-                <Table tableData={data} />
+                <div>
+                  <Table tableData={data} />
+                </div>
               ) : null}
             </div>
             {/* END TABLE */}
@@ -114,12 +113,13 @@ const Index = () => {
             <div
               className={
                 activeTab === "table"
-                  ? "w-3/4 mx-4 lg:block hidden"
-                  : "w-3/4 mx-4 lg:block "
+                  ? "w-2/3 mx-4 lg:block hidden"
+                  : "w-2/3 mx-4 lg:block "
               }
             >
               <div className="flex flex-col">
                 <div className="flex flex-row">
+                  {/* START CHART */}
                   <div
                     className={
                       activeTab === "chart"
@@ -135,6 +135,7 @@ const Index = () => {
                       <ChartLine data={data} />
                     ) : null}
                   </div>
+                  {/* END CHART */}
                   <div
                     className={
                       activeTab === "doughnut"
@@ -151,11 +152,12 @@ const Index = () => {
                     ) : null}
                   </div>
                 </div>
-
                 {/* TOOLBAR */}
                 <div
                   className={
-                    activeTab === "toolbar" ? "mt-4" : "mt-4 lg:block hidden"
+                    activeTab === "toolbar"
+                      ? "w-full mt-4"
+                      : "w-full mt-4 lg:block hidden"
                   }
                 >
                   <Toolbar />

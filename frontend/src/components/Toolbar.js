@@ -52,20 +52,21 @@ const Toolbar = () => {
       </div>
 
       <div className=" flex lg:flex-row flex-col w-full">
-        <div className="lg:w-1/3 w-full lg:mr-3 mr-0">
+        {/* <div className="lg:w-1/3 w-full lg:mr-3 mr-0">
           <OptionsDisplayType />
-        </div>
+        </div> */}
         <div className="lg:w-1/3 w-full lg:mr-3 mr-0">
           <OptionsDatasets />
         </div>
+        <div className="lg:w-2/3 w-0"> </div>
         <div className="lg:w-2/3 w-full">
           <OptionsDateRange />
         </div>
       </div>
 
-      <div className="w-full ">
+      {/* <div className="w-full ">
         <div>{Sources()}</div>
-      </div>
+      </div> */}
     </div>
   );
 };
