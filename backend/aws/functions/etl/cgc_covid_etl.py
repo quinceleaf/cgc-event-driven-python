@@ -1,6 +1,8 @@
 import os
 import sys
 
+import boto3
+
 from cgc_covid_fetch_data import fetch_data
 from cgc_covid_transform_data import transform_data
 from cgc_covid_load_data import load_data
@@ -20,10 +22,12 @@ TOPIC_ARN = os.environ["TOPIC_ARN"]
 URL_DATASET_JHU = os.environ["URL_DATASET_JHU"]
 URL_DATASET_NYT = os.environ["URL_DATASET_NYT"]
 
+sns = boto3.client("sns")
+
 
 def publish_to_sns(error_message):
     # publishes error message to SNS topic for interested consumers
-   
+
     response = sns.publish(
         TopicArn=TOPIC_ARN,
         Message=error_message,

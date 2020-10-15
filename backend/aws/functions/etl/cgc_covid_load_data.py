@@ -45,6 +45,9 @@ def load_data(data_combined):
             load_cases = str(data_load["Cases"][date])
             load_deaths = str(data_load["Deaths"][date])
             load_recovered = str(data_load["Recovered"][date])
+            load_daily_cases = str(data_load["Daily Cases"][date])
+            load_daily_deaths = str(data_load["Daily Deaths"][date])
+            load_daily_recovered = str(data_load["Daily Recovered"][date])
 
             try:
                 response = dynamodb.put_item(
@@ -60,6 +63,15 @@ def load_data(data_combined):
                         },
                         "recovered": {
                             "N": load_recovered,
+                        },
+                        "daily_cases": {
+                            "N": load_daily_cases,
+                        },
+                        "daily_deaths": {
+                            "N": load_daily_deaths,
+                        },
+                        "daily_recovered": {
+                            "N": load_daily_recovered,
                         },
                     },
                     ConditionExpression="attribute_not_exists(SK)",
@@ -95,6 +107,9 @@ def load_data(data_combined):
             load_cases = str(data_load["Cases"][date])
             load_deaths = str(data_load["Deaths"][date])
             load_recovered = str(data_load["Recovered"][date])
+            load_daily_cases = str(data_load["Daily Cases"][date])
+            load_daily_deaths = str(data_load["Daily Deaths"][date])
+            load_daily_recovered = str(data_load["Daily Recovered"][date])
 
             datapoint_create = {
                 "Put": {
@@ -110,6 +125,15 @@ def load_data(data_combined):
                         },
                         "recovered": {
                             "N": load_recovered,
+                        },
+                        "daily_cases": {
+                            "N": load_daily_cases,
+                        },
+                        "daily_deaths": {
+                            "N": load_daily_deaths,
+                        },
+                        "daily_recovered": {
+                            "N": load_daily_recovered,
                         },
                     },
                     "ConditionExpression": "attribute_not_exists(SK)",

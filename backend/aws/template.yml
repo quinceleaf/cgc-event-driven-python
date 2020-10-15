@@ -156,7 +156,7 @@ Resources:
     Properties:
       Name: !Sub ${AWS::StackName}-ETL-Trigger
       Description: Daily trigger for CGC ETL pipeline
-      ScheduleExpression: rate(5 minutes)
+      ScheduleExpression: rate(1 day)
       State: ENABLED
       Targets:
         - Arn: !GetAtt DataIngestionFunction.Arn

@@ -21,10 +21,11 @@ def lambda_handler(event, context):
         },
     }
 
-    results = table.query(KeyConditionExpression=Key("PK").eq("DATAPOINT"),
-        ProjectionExpression="#date,cases,deaths,recovered",
+    results = table.query(
+        KeyConditionExpression=Key("PK").eq("DATAPOINT"),
+        ProjectionExpression="#date,cases,deaths,recovered,daily_cases,daily_deaths,daily_recovered",
         ExpressionAttributeNames={
-        "#date": "date",
+            "#date": "date",
         },
     )
     transformed_results = transform_results(results["Items"])
@@ -45,4 +46,3 @@ def transform_results(results):
         return_data.append(temp)
 
     return return_data
-

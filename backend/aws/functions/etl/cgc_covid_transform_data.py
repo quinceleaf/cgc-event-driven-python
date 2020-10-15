@@ -1,3 +1,5 @@
+import datetime as dt
+
 import pandas as pd
 
 
@@ -52,6 +54,25 @@ def transform_data(data_nyt, data_jhu):
         # > drop superfluous decimal
         data_combined = data_combined.astype(int)
         step = 8
+
+        # > generate daily data
+        data_combined["Daily Cases"] = data_combined["Cases"] - data_combined[
+            "Cases"
+        ].shift(1)
+        data_combined["Daily Deaths"] = data_combined["Deaths"] - data_combined[
+            "Deaths"
+        ].shift(1)
+        data_combined["Daily Recovered"] = data_combined["Recovered"] - data_combined[
+            "Recovered"
+        ].shift(1)
+        step = 9
+
+        # > set daily data for first day
+        target_date_dt = dt.datetime.strptime("2020-01-22", "%Y-%m-%d")
+        data_combined.ix[target_date_dt, "Daily Cases"] = 1
+        data_combined.ix[target_date_dt, "Daily Deaths"] = 0
+        data_combined.ix[target_date_dt, "Daily Recovered"] = 0
+        step = 10
 
         return True, data_combined, []
 
